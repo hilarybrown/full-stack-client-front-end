@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Movie Manager</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,14 +12,170 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
+      <h1>Movie Manager</h1>
+      <p>A user-managed library of movies, movie reviews, and movies-to-watch</p>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+
+      <!-- Begin Sign up and Sign in Container -->
+      <div class="sign-in-container">
+      <!-- Sign Up Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+        Sign Up
+      </button>
+
+      <!-- Sign Up Modal -->
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="sign-up">
+                <fieldset>
+                  <legend>Sign Up</legend>
+                  <input type="text" name="credentials[email]" placeholder="Enter Email">
+                  <input type="text" name="credentials[password]" placeholder="Enter Password">
+                  <input type="text" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+                  <input type="submit" name="submit" value="Sign Up">
+                </fieldset>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Sign In Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
+        Sign In
+      </button>
+
+      <!-- Sign In Modal -->
+      <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="sign-in">
+                <fieldset>
+                  <legend>Sign In</legend>
+                  <input type="text" name="credentials[email]" placeholder="Enter Email">
+                  <input type="text" name="credentials[password]" placeholder="Enter Password">
+                </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Sign In</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- End sign up and sign in container -->
+
+
+
+    <!-- Begin Password Update form container -->
+    <div class="password-update-container" id=pwUpdateContainer>
+      <!-- Sign In Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#passwordUpdateModal">
+        Update Password
+      </button>
+
+      <!-- Sign In Modal -->
+      <div class="modal fade" id="passwordUpdateModal" tabindex="-1" role="dialog" aria-labelledby="passwordUpdateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="passwordUpdateModalLabel">New Movie</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="change-password">
+                <fieldset>
+                  <legend>Change Password</legend>
+                  <input type="text" name="passwords[old]" placeholder="Old Password">
+                  <input type="text" name="passwords[new]" placeholder="New Password">
+                </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Change Password</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- End password update form container -->
+
+
+
+    <!-- Begin Sign Out Container -->
+    <div id="signOut">
+    <button type="button" name="submit" id="sign-out" class="btn btn-primary">Sign Out</button>
+    </div>
+    <!-- End Sign Out Container -->
+
+
+
+    <!-- Begin New Movie Form Container -->
+    <div class="new-movie-container" id=newMovieContainer>
+      <!-- Sign In Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newMovieModal">
+        New Movie
+      </button>
+
+      <!-- Sign In Modal -->
+      <div class="modal fade" id="newMovieModal" tabindex="-1" role="dialog" aria-labelledby="newMovieModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="newMovieModalLabel">New Movie</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="new-movie">
+                <fieldset>
+                  <legend>New Movie</legend>
+                  <h6 id="movieTitle">Movie Title:</h6><input type="text" name="movie[title]" placeholder="Movie Title">
+                  <h6 id="movieGenre">Movie Genre:</h6><input type="text" name="movie[genre]" placeholder="Movie Genre">
+                  <h6 id="movieDescription">Movie Description:</h6><input type="text" name="movie[description]" placeholder="Brief Plot Description">
+                  <h6 id="movieWasWatched">Has Movie Been Watched?:</h6><input type="text" name="movie[was_watched]" placeholder="Yes or No">
+                  <h6 id="movieRating">1-5 Star Rating:</h6><input type="text" name="movie[rating]" placeholder="1 to 5 or blank">
+                  <h6 id="movieReWatch">Worth Re-watching?:</h6><input type="text" name="movie[re_watch]" placeholder="Yes or No">
+                </fieldset>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Sign In</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auth User Message -->
+      <div id="auth-message"></div>
+
+    </div>
+    <!-- End new movie form container -->
+
     </body>
 </html>
