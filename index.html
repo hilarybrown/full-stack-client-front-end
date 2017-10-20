@@ -144,7 +144,7 @@
 
 
     <!-- Begin New Movie Form Container -->
-    <div class="new-movie-container" id=newMovieContainer style="display: none">
+    <div class="new-movie-container" id=moviesContainer style="display: none">
       <!-- Sign In Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newMovieModal">
         New Movie
@@ -161,17 +161,18 @@
               </button>
             </div>
             <div class="modal-body">
-              <form id="new-movie">
+              <form id="new-movie-form">
                 <fieldset>
                   <legend>New Movie</legend>
                   <h6 id="movieTitle">Movie Title:</h6><input type="text" name="movie[title]" placeholder="Movie Title">
                   <h6 id="movieGenre">Movie Genre:</h6><input type="text" name="movie[genre]" placeholder="Movie Genre">
                   <h6 id="movieDescription">Movie Description:</h6><input type="text" name="movie[description]" placeholder="Brief Plot Description">
-                  <h6 id="movieWasWatched">Has Movie Been Watched?:</h6><input type="text" name="movie[was_watched]" placeholder="Yes or No">
-                  <h6 id="movieRating">1-5 Star Rating:</h6><input type="text" name="movie[rating]" placeholder="1 to 5 or blank">
+                  <h6 id="movieWasWatched">Watched Movie Yet?:</h6><input type="text" name="movie[was_watched]" placeholder="Yes or No">
+                  <h6 id="movieRating">Rating:</h6><input type="text" name="movie[rating]" placeholder="1 to 5 or blank">
                   <h6 id="movieReWatch">Worth Re-watching?:</h6><input type="text" name="movie[re_watch]" placeholder="Yes or No">
                 </fieldset>
               </form>
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -181,11 +182,14 @@
         </div>
       </div>
 
-      <!-- Auth User Message -->
-      <div id="auth-message"></div>
+      <button id="getMoviesButton" class="btn btn-default">View All Movies</button>
 
     </div>
     <!-- End new movie form container -->
+
+
+          <!-- Auth User Message -->
+          <div id="auth-message"></div>
 
     </body>
 </html>
