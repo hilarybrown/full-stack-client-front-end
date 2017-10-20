@@ -15,9 +15,12 @@
       <h1>Movie Manager</h1>
       <p>A user-managed library of movies, movie reviews, and movies-to-watch</p>
 
+      <!-- Begin Signed In as... container -->
+      <div id="currentUserMessage"></div>
+
 
       <!-- Begin Sign up and Sign in Container -->
-      <div class="sign-in-container">
+      <div id="sign-in-container">
       <!-- Sign Up Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
         Sign Up
@@ -40,7 +43,12 @@
                   <input type="text" name="credentials[email]" placeholder="Enter Email">
                   <input type="text" name="credentials[password]" placeholder="Enter Password">
                   <input type="text" name="credentials[password_confirmation]" placeholder="Password Confirmation">
-                  <input type="submit" name="submit" value="Sign Up">
+                  <!-- <div class="modal-footer"> -->
+                  <p>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                  </p>
+                <!-- </div> -->
                 </fieldset>
               </form>
             </div>
@@ -70,12 +78,12 @@
                   <legend>Sign In</legend>
                   <input type="text" name="credentials[email]" placeholder="Enter Email">
                   <input type="text" name="credentials[password]" placeholder="Enter Password">
+                    <div class="modal-footer">
+                      <input type="submit" class="btn btn-primary" name="submit" value="Sign In">
+                      <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                    </div>
                 </fieldset>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Sign In</button>
             </div>
           </div>
         </div>
@@ -87,7 +95,7 @@
 
 
     <!-- Begin Password Update form container -->
-    <div class="password-update-container" id=pwUpdateContainer>
+    <div class="password-update-container" id=pwUpdateContainer style="display: none">
       <!-- Sign In Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#passwordUpdateModal">
         Update Password
@@ -109,12 +117,12 @@
                   <legend>Change Password</legend>
                   <input type="text" name="passwords[old]" placeholder="Old Password">
                   <input type="text" name="passwords[new]" placeholder="New Password">
+                    <div class="modal-footer">
+                    <input type="submit" class="btn btn-primary" name="submit" value="Change Password">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+                  </div>
                 </fieldset>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Change Password</button>
             </div>
           </div>
         </div>
@@ -126,15 +134,17 @@
 
 
     <!-- Begin Sign Out Container -->
-    <div id="signOut">
-    <button type="button" name="submit" id="sign-out" class="btn btn-primary">Sign Out</button>
-    </div>
+    <form id="sign-out" style="display: none">
+      <fieldset>
+        <input type="submit" name="submit" class="btn btn-primary" value="Sign out">
+      </fieldset>
+    </form>
     <!-- End Sign Out Container -->
 
 
 
     <!-- Begin New Movie Form Container -->
-    <div class="new-movie-container" id=newMovieContainer>
+    <div class="new-movie-container" id=newMovieContainer style="display: none">
       <!-- Sign In Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newMovieModal">
         New Movie
