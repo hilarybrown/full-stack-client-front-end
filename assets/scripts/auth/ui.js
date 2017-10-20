@@ -18,7 +18,7 @@ const signUpFailure = function (error) {
 // show success message
 const signInSuccess = function (data) {
   console.log(data)
-  $('$getMoviesButton').show()
+  $('#getMoviesButton').show()
   $('#signInModal').modal('hide')
   $('#sign-in-container').hide()
   $('#pwUpdateContainer').show()
@@ -45,7 +45,7 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function (data) {
-  $('$getMoviesButton').hide()
+  $('#getMoviesButton').hide()
   $('#pwUpdateContainer').hide()
   $('#sign-out').hide()
   $('#newMovieModal').hide()
