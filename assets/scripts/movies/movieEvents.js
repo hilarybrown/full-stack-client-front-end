@@ -28,6 +28,19 @@ const onRemoveMovie = function (event) {
     .catch(movieUi.removeMovieFailure)
 }
 
+const onUpdateMovie = function (event) {
+  event.preventDefault()
+  console.log('event')
+  const data = getFormFields(event.target)
+  const movieId = (event.target).getAttribute('data-id')
+  console.log('save update button clicked, event.target is ', event.target)
+  console.log('data is ', data)
+  console.log('movie id is ', movieId)
+  // movieApi.updateMovie(data, movieId)
+    // .then(movieUi.updateMovieSuccess)
+    // .catch(movieUi.updateMovieFailure)
+}
+
 const addHandlers = () => {
   $('#getMoviesButton').on('submit', onGetMovies)
   $('#new-movie').on('submit', onNewMovie)
@@ -38,5 +51,6 @@ module.exports = {
   addHandlers,
   onGetMovies,
   onNewMovie,
-  onRemoveMovie
+  onRemoveMovie,
+  onUpdateMovie
 }

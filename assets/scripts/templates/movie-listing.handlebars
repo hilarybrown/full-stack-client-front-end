@@ -7,12 +7,9 @@
         <h6><strong>Have You Watched It?:</strong> {{movie.was_watched}}</h6>
         <h6><strong>Rating:</strong> {{movie.rating}}</h6>
         <h6><strong>Worth Re-watching?:</strong> {{movie.re_watch}}</h6>
-          <button class="edit" data-id="{{movie.id}}" type="button" data-toggle="modal" data-target="#editMovieModal">
-          Edit
-          </button>
-          <button class="remove" type="button" data-id="{{movie.id}}">Remove</button>
-      </div>
+          <button id="edit-movie-button" data-toggle="modal" data-id="{{movie.id}}" data-target="#editMovieModal" class="btn btn-default edit-movie">Edit</button>
+          <button class="btn btn-default remove" type="button" data-id="{{movie.id}}">Remove</button>
+    </div>
 
-<!-- create remove event in scripts > movies > events.js to add button functionality -->
 
     {{/each}}

@@ -36,8 +36,20 @@ const removeMovie = function (data) {
   })
 }
 
+const updateMovie = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/movies/' + store.movie.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   getMovies,
   newMovie,
-  removeMovie
+  removeMovie,
+  updateMovie
 }
