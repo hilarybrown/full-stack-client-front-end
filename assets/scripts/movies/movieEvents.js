@@ -1,14 +1,14 @@
 'use strict'
 
-const getFormFields = require(`../../../lib/get-form-fields`)
 const movieApi = require('./movieApi')
 const movieUi = require('./movieUi')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
 const onGetMovies = function (event) {
   event.preventDefault()
-  movieApi.getMovies()
-    .then(movieUi.getMoviesSuccess)
-    .catch(movieUi.getMoviesFailure)
+  movieApi.getAllMovies()
+    .then(movieUi.getAllMoviesSuccess)
+    .catch(movieUi.failure)
 }
 
 const onNewMovie = function (event) {
