@@ -45,10 +45,12 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function (data) {
+  $('#sign-in-container').show()
   $('#getMoviesButton').hide()
   $('#pwUpdateContainer').hide()
   $('#sign-out').hide()
   $('#newMovieModal').hide()
+  $('#auth-message').show()
   $('#auth-message').text('Come back again soon!')
   store.user = null
   console.log(data)
