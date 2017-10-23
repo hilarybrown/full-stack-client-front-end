@@ -1,7 +1,7 @@
 'use strict'
 
-// const store = require('../store')
-const app = require('../app.js')
+const store = require('../store')
+// const app = require('../app.js')
 
 const success = (data) => {
   if (data) {
@@ -17,8 +17,8 @@ const failure = (error) => {
 
 // store user's data upon successful sign up
 const signUpSuccess = function (data) {
-  // store.user = data.user
-  app.user = data.user
+  store.user = data.user
+  // app.user = data.user
   $('#signUpModal').modal('hide')
   $('#signUpModal').hide()
   $('#auth-message').text('Congrats! You are now signed up. Please now SIGN IN with your new credentials to access your movies.')
@@ -39,7 +39,7 @@ const signInSuccess = function (data) {
   $('#sign-out').show()
   $('#newMovieContainer').show()
   $('#auth-message').text('Welcome!')
-  app.user = data.user
+  store.user = data.user
 }
 
 const signInFailure = function (error) {
@@ -64,7 +64,7 @@ const signOutSuccess = function (data) {
   $('#sign-out').hide()
   $('#newMovieModal').hide()
   $('#auth-message').text('Come back again soon!')
-  app.user = null
+  store.user = null
   console.log(data)
 }
 
