@@ -6,9 +6,9 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const onGetMovies = function (event) {
   event.preventDefault()
-  movieApi.getAllMovies()
-    .then(movieUi.getAllMoviesSuccess)
-    .catch(movieUi.failure)
+  movieApi.getMovies()
+    .then(movieUi.getMoviesSuccess)
+    .catch(movieUi.getMoviesFailure)
 }
 
 const onNewMovie = function (event) {
