@@ -45,6 +45,7 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function (data) {
+  $('#app-message').hide()
   $('#sign-in-container').show()
   $('#getMoviesButton').hide()
   $('#pwUpdateContainer').hide()
