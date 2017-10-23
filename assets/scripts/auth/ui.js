@@ -20,12 +20,12 @@ const signUpSuccess = function (data) {
   store.user = data.user
   $('#signUpModal').modal('hide')
   $('#signUpModal').hide()
-  $('#auth-message').text('Congrats! You are now signed up. Please now SIGN IN with your new credentials to access your movies.')
+  $('#authMessage').text('Congrats! You are now signed up. Please now SIGN IN with your new credentials to access your movies.')
 }
 
 const signUpFailure = function (error) {
   console.error(error)
-  $('#auth-message').text('Error on sign up')
+  $('#authMessage').text('Error on sign up')
 }
 
 // show success message
@@ -37,27 +37,28 @@ const signInSuccess = function (data) {
   $('#pwUpdateContainer').show()
   $('#sign-out').show()
   $('#newMovieContainer').show()
-  $('#auth-message').text('Welcome!')
+  $('#authMessage').text('Welcome!')
   store.user = data.user
 }
 
 const signInFailure = function (error) {
   console.error(error)
-  $('#auth-message').text('Error on sign in')
+  $('#authMessage').text('Error on sign in')
 }
 
 const changePasswordSuccess = function (data) {
   $('#change-password')[0].reset()
-  $('#auth-message').text('Password successfully changed')
+  $('#authMessage').text('Password successfully changed')
   console.log(data)
 }
 
 const changePasswordFailure = function (error) {
   console.error(error)
-  $('#auth-message').text('Error on password change')
+  $('#authMessage').text('Error on password change')
 }
 
 const signOutSuccess = function (data) {
+  $('#appMessage').hide()
   $('#sign-in-container').show()
   $('#getMoviesButton').hide()
   $('#pwUpdateContainer').hide()
@@ -65,8 +66,8 @@ const signOutSuccess = function (data) {
   $('#sign-in').show()
   $('#change-password').show()
   $('#newMovieModal').hide()
-  $('#auth-message').show()
-  $('#auth-message').text('Come back again soon!')
+  $('#authMessage').show()
+  $('#authMessage').text('Come back again soon!')
   store.user = null
   console.log(data)
 }
