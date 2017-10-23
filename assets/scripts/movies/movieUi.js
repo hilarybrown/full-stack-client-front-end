@@ -8,6 +8,7 @@ const store = require('../store')
 const getMoviesSuccess = function (data) {
   console.log('getMovieSucces ui = ', data)
   const showMoviesHtml = showMoviesTemplate({ movies: data.movies })
+  $('#authMessage').hide()
   $('#appMessage').show()
   $('#appMessage').text('Here are all movies submitted by you')
   $('#showAllMovies').empty()
@@ -23,6 +24,7 @@ const getMoviesfailure = function (error) {
 const newMovieSuccess = function (data) {
   store.movie = data.movie
   $('#newMovieModal').modal('hide')
+  $('#new-movie')[0].reset()
   $('#appMessage').show()
   $('#appMessage').text('Your new movie has been saved. Two thumbs, way up!')
   console.log(store.movie)

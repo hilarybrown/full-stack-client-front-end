@@ -1,18 +1,14 @@
 'use strict'
 
 const store = require('../store')
-// const app = require('../app.js')
 
-const success = (data) => {
-  if (data) {
-    console.log(data)
-  } else {
-    console.log('Success')
-  }
+const success = function (data) {
+  store.user = data.user
+  console.log('success ui run')
 }
 
-const failure = (error) => {
-  console.log(error)
+const failure = function (data) {
+  console.log('failure ui run')
 }
 
 // store user's data upon successful sign up
@@ -20,6 +16,8 @@ const signUpSuccess = function (data) {
   store.user = data.user
   $('#signUpModal').modal('hide')
   $('#signUpModal').hide()
+  $('#sign-up')[0].reset()
+  $('#authMessage').show()
   $('#authMessage').text('Congrats! You are now signed up. Please now SIGN IN with your new credentials to access your movies.')
 }
 
@@ -37,6 +35,8 @@ const signInSuccess = function (data) {
   $('#pwUpdateContainer').show()
   $('#sign-out').show()
   $('#newMovieContainer').show()
+  $('#sign-in')[0].reset()
+  $('#authMessage').show()
   $('#authMessage').text('Welcome!')
   store.user = data.user
 }
@@ -61,11 +61,12 @@ const signOutSuccess = function (data) {
   $('#appMessage').hide()
   $('#sign-in-container').show()
   $('#getMoviesButton').hide()
+  $('#showAllMovies').hide()
   $('#pwUpdateContainer').hide()
   $('#sign-out').hide()
   $('#sign-in').show()
   $('#change-password').show()
-  $('#newMovieModal').hide()
+  $('#newMovieContainer').hide()
   $('#authMessage').show()
   $('#authMessage').text('Come back again soon!')
   store.user = null
