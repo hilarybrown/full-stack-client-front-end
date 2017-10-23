@@ -1,0 +1,18 @@
+{{#each movies as |movie|}}
+    <!-- setting up an array, calling it movies and having each go through the entire movies array and pulling back all enterable data, per below -->
+    <div class="movies-table" data-id="{{movie.id}}">
+        <h6><strong>Title:</strong> {{movie.title}}</h6>
+        <h6><strong>Genre:</strong> {{movie.genre}}</h6>
+        <h6><strong>Brief Plot Description:</strong> {{movie.description}}</h6>
+        <h6><strong>Have You Watched It?:</strong> {{movie.was_watched}}</h6>
+        <h6><strong>Rating:</strong> {{movie.rating}}</h6>
+        <h6><strong>Worth Re-watching?:</strong> {{movie.re_watch}}</h6>
+          <button class="edit" data-id="{{movie.id}}" type="button" data-toggle="modal" data-target="#editMovieModal">
+          Edit
+          </button>
+          <button class="remove" type="button" data-id="{{movie.id}}">Remove</button>
+      </div>
+
+<!-- create remove event in scripts > movies > events.js to add button functionality -->
+
+    {{/each}}

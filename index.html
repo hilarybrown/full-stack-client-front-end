@@ -13,10 +13,20 @@
     </head>
     <body class="container-fluid">
       <h1>Movie Manager</h1>
-      <p>A user-managed library of movies, movie reviews, and movies-to-watch</p>
+      <p class="appDescription">A user-managed library of movies, movie reviews, and movies-to-watch</p>
 
+
+    <!-- Container for all Messages shown to user -->
+    <div class="messageContainer">
       <!-- Begin Signed In as... container -->
       <div id="currentUserMessage"></div>
+
+      <!-- user message container -->
+      <div id="appMessage"></div>
+
+      <!-- Auth User Message -->
+      <div id="authMessage"></div>
+    </div>
 
 
       <!-- Begin Sign up and Sign in Container -->
@@ -145,12 +155,12 @@
 
     <!-- Begin New Movie Form Container -->
     <div class="new-movie-container" id=newMovieContainer style="display: none">
-      <!-- Sign In Button trigger modal -->
+      <!-- New Movie Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newMovieModal">
         New Movie
       </button>
 
-      <!-- Sign In Modal -->
+      <!-- New Movie Modal -->
       <div class="modal fade" id="newMovieModal" tabindex="-1" role="dialog" aria-labelledby="newMovieModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -163,29 +173,101 @@
             <div class="modal-body">
               <form id="new-movie">
                 <fieldset>
-                  <legend>New Movie</legend>
-                  <h6 id="movieTitle">Movie Title:</h6><input type="text" name="movie[title]" placeholder="Movie Title">
-                  <h6 id="movieGenre">Movie Genre:</h6><input type="text" name="movie[genre]" placeholder="Movie Genre">
-                  <h6 id="movieDescription">Movie Description:</h6><input type="text" name="movie[description]" placeholder="Brief Plot Description">
-                  <h6 id="movieWasWatched">Has Movie Been Watched?:</h6><input type="text" name="movie[was_watched]" placeholder="Yes or No">
-                  <h6 id="movieRating">1-5 Star Rating:</h6><input type="text" name="movie[rating]" placeholder="1 to 5 or blank">
-                  <h6 id="movieReWatch">Worth Re-watching?:</h6><input type="text" name="movie[re_watch]" placeholder="Yes or No">
+                  <!-- <legend>New Movie</legend> -->
+                  <h6 id="movieTitle">Movie Title: </h6><input type="text" name="movie[title]" placeholder="Movie Title" required>
+                  <h6 id="movieGenre">Movie Genre: </h6><input type="text" name="movie[genre]" placeholder="Movie Genre" required>
+                  <h6 id="movieDescription">Movie Description: </h6><input type="text" name="movie[description]" placeholder="Brief Plot Description" required>
+                  <h6 id="movieWasWatched">Have You Watched It?: </h6><select name=movie[was_watched] required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  <h6 id="movieRating">1-5 Star Rating: </h6><select name=movie[rating] required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="Haven't Watched Yet">Haven't Watched Yet</option>
+                  </select>
+                  <h6 id="movieReWatch">Worth Watching Again?: </h6><select name=movie[re_watch] required>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  <option value="Haven't Watched Yet">Haven't Watched Yet</option>
+                  </select>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                  </div>
                 </fieldset>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Sign In</button>
             </div>
           </div>
         </div>
       </div>
+      <!-- End New Movie Form Container -->
 
-      <!-- Auth User Message -->
-      <div id="auth-message"></div>
 
+      <!-- Begin Get All Movies Container -->
+      <form id="getMoviesButton" style="display: none">
+        <fieldset>
+          <input type="submit" name="submit" class="btn btn-primary" value="View All Movies">
+        </fieldset>
+      </form>
+      <!-- End Get All Movies Container -->
+
+
+          <!-- Movies Display area -->
+          <div id="showAllMovies"></div>
+
+
+      <!-- Begin Edit Movie Form Container -->
+      <div class="edit-movie-container" id=editMovieContainer style="display: none">
+      <!-- Edit Movie Modal -->
+        <div class="modal fade" id="editMovieModal" tabindex="-1" role="dialog" aria-labelledby="editMovieModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="editMovieModalLabel">Edit Movie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="edit-movie">
+                  <fieldset>
+                    <!-- <legend>New Movie</legend> -->
+                    <h6 id="editMovieTitle">Movie Title: </h6><input type="text" name="movie[title]" placeholder="Movie Title">
+                    <h6 id="editMovieGenre">Movie Genre: </h6><input type="text" name="movie[genre]" placeholder="Movie Genre" required>
+                    <h6 id="editMovieDescription">Movie Description: </h6><input type="text" name="movie[description]" placeholder="Brief Plot Description" required>
+                    <h6 id="editMovieWasWatched">Have You Watched It?: </h6><select name=movie[was_watched] required>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                    <h6 id="editMovieRating">1-5 Star Rating: </h6><select id="editMovieRating" name=movie[re_watched] required>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="Haven't Watched Yet">Haven't Watched Yet</option>
+                    </select>
+                    <h6 id="editMovieReWatch">Worth Watching Again?: </h6><select name=movie[re_watch] required>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                      <option value="Haven't Watched Yet">Haven't Watched Yet</option>
+                    </select>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                      <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-    <!-- End new movie form container -->
+    <!-- End Edit Movie form container -->
 
     </body>
 </html>
