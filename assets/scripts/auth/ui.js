@@ -18,7 +18,6 @@ const failure = (error) => {
 // store user's data upon successful sign up
 const signUpSuccess = function (data) {
   store.user = data.user
-  // app.user = data.user
   $('#signUpModal').modal('hide')
   $('#signUpModal').hide()
   $('#auth-message').text('Congrats! You are now signed up. Please now SIGN IN with your new credentials to access your movies.')
@@ -59,9 +58,13 @@ const changePasswordFailure = function (error) {
 }
 
 const signOutSuccess = function (data) {
+  console.log('made it to sign out ui succcess')
+  $('#appMessage').hide()
   $('#getMoviesButton').hide()
   $('#pwUpdateContainer').hide()
   $('#sign-out').hide()
+  $('#sign-in').show()
+  $('#change-password').show()
   $('#newMovieModal').hide()
   $('#auth-message').text('Come back again soon!')
   store.user = null
@@ -69,6 +72,7 @@ const signOutSuccess = function (data) {
 }
 
 const signOutFailure = function (error) {
+  $('#appMessage').hide()
   console.log(error)
   $('#auth-message').text('Error on sign out')
 }

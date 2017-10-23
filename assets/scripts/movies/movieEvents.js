@@ -22,18 +22,16 @@ const onNewMovie = function (event) {
 const onRemoveMovie = function (event) {
   event.preventDefault()
   console.log('made it to onRemoveMovie event')
-  $('.remove').on('click', function (event) {
-    $(event.target).parent().hide()
-    movieApi.removeMovie($(event.target).parent().attr('data-id'))
-      .then(movieUi.removeMovieSuccess)
-      .catch(movieUi.removeMovieFailure)
-  })
+  const data = $(event.target).parent().attr('data-id')
+  movieApi.removeMovie(data)
+    .then(movieUi.removeMovieSuccess)
+    .catch(movieUi.removeMovieFailure)
 }
 
 const addHandlers = () => {
   $('#getMoviesButton').on('submit', onGetMovies)
-  // $('#new-movie').on('submit', onNewMovie)
   $('#new-movie').on('submit', onNewMovie)
+  $('#showAllMovies').on('click', '.remove', onRemoveMovie)
 }
 
 module.exports = {
