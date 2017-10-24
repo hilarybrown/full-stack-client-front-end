@@ -8,7 +8,6 @@ const onGetMovies = function (event) {
   event.preventDefault()
   movieApi.getMovies()
     .then((movies) => {
-      console.log('we are not going cray cray banaynay')
       $(document).on('submit', '#edit-movie', onUpdateMovie)
       return movies
     })
@@ -45,8 +44,6 @@ const onUpdateMovie = function (event) {
     .then(movieUi.updateMovieSuccess)
     .catch(movieUi.updateMovieFailure)
 }
-
-// const onSubmitUpdateMovie
 
 const addHandlers = () => {
   $('#getMoviesButton').on('submit', onGetMovies)
