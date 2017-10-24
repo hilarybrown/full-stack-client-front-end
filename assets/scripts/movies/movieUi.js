@@ -7,18 +7,16 @@ const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 
 const getMoviesSuccess = function (data) {
-  console.log('getMovieSucces ui = ', data)
   const showMoviesHtml = showMoviesTemplate({ movies: data.movies })
   $('#authMessage').hide()
   $('#appMessage').show()
   $('#appMessage').text('Here are all movies submitted by you')
-  $('#showAllMovies').empty()
+  $('#showAllMovies').show()
+  $('#showAllMovies').html('')
   $('#showAllMovies').html(showMoviesHtml)
-  // $('#showAllMovies').on('click', '.edit-movie', testClick)
 }
 
-const getMoviesFailure = function (error) {
-  console.error(error)
+const getMoviesFailure = function (data) {
   $('#appMessage').show()
   $('#appMessage').text('Error bringing back your movies. Two thumbs, way down.')
 }
@@ -28,8 +26,7 @@ const newMovieSuccess = function (data) {
   $('#newMovieModal').modal('hide')
   $('#new-movie')[0].reset()
   $('#appMessage').show()
-  $('#appMessage').text('Your new movie has been saved. Two thumbs, way up!')
-  console.log(store.movie)
+  $('#appMessage').text("Your new movie has been saved. Click 'View All Movies' to see your addition.")
 }
 
 const newMovieFailure = function (error) {
@@ -39,7 +36,7 @@ const newMovieFailure = function (error) {
 
 const removeMovieSuccess = function (data) {
   $('#appMessage').show()
-  $('#appMessage').text('The selected movie has been removed.')
+  $('#appMessage').text("Your movie has been removed. Click 'View All Movies' to see the updated list.")
 }
 
 const removeMovieFailure = function (error) {
@@ -48,15 +45,17 @@ const removeMovieFailure = function (error) {
   $('#appMessage').text("Error removing the movie. You're stuck with it for now.")
 }
 
-// const editMovieSuccess = function (data) {
-//   $('#showAllMovies').html('')
-//   const editMovieHTML = editMovieTemplate(data.review)
-//   $('.update-review-content').html(editReviewHTML)
-// }
-//
-// const editReviewError = function () {
-//   console.log('Edit review did not work. Try again.')
-// }
+const updateMovieSuccess = function (data) {
+  $('#editMovieModal').modal('hide')
+  $('#appMessage').show()
+  $('#appMessage').text("Your movie has been updated. Click 'View All Movies' to see your update.")
+}
+
+const updateMovieFailure = function (error) {
+  console.log(error)
+  $('#appMessage').show()
+  $('#appMessage').text('Error saving your update.')
+}
 
 module.exports = {
   getMoviesSuccess,
@@ -64,7 +63,7 @@ module.exports = {
   newMovieSuccess,
   newMovieFailure,
   removeMovieSuccess,
-  removeMovieFailure
-  // updateMovieSuccess,
-  // updateMovieFailure
+  removeMovieFailure,
+  updateMovieSuccess,
+  updateMovieFailure
 }

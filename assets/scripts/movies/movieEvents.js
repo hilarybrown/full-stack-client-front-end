@@ -8,7 +8,6 @@ const onGetMovies = function (event) {
   event.preventDefault()
   movieApi.getMovies()
     .then((movies) => {
-      console.log('we are not going cray cray banaynay')
       $(document).on('submit', '#edit-movie', onUpdateMovie)
       return movies
     })
@@ -26,7 +25,6 @@ const onNewMovie = function (event) {
 
 const onRemoveMovie = function (event) {
   event.preventDefault()
-  console.log('made it to onRemoveMovie event')
   const data = $(event.target).parent().attr('data-id')
   movieApi.removeMovie(data)
     .then(movieUi.removeMovieSuccess)
@@ -34,26 +32,18 @@ const onRemoveMovie = function (event) {
 }
 
 const onUpdateMovie = function (event) {
-  console.log('inside updateMovie')
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('event.target =', event.target)
   const movieId = data.movie.id
-  console.log('movieId =', movieId)
-  console.log('data =', data)
   movieApi.updateMovie(movieId, data)
     .then(movieUi.updateMovieSuccess)
     .catch(movieUi.updateMovieFailure)
 }
 
-// const onSubmitUpdateMovie
-
 const addHandlers = () => {
   $('#getMoviesButton').on('submit', onGetMovies)
   $('#new-movie').on('submit', onNewMovie)
   $('#showAllMovies').on('click', '.remove', onRemoveMovie)
-  // $(document).on('submit', '.editButton', onUpdateMovie)
-  // $(document).on('submit', '#editMovieModal', onSubmitUpdateMovie
 }
 
 module.exports = {

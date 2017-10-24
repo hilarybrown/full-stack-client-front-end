@@ -48,6 +48,7 @@ const signInFailure = function (error) {
 
 const changePasswordSuccess = function (data) {
   $('#change-password')[0].reset()
+  $('#passwordUpdateModal').modal('hide')
   $('#authMessage').text('Password successfully changed')
   console.log(data)
 }
