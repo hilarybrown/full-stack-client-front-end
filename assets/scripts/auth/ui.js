@@ -4,11 +4,9 @@ const store = require('../store')
 
 const success = function (data) {
   store.user = data.user
-  console.log('success ui run')
 }
 
 const failure = function (data) {
-  console.log('failure ui run')
 }
 
 // store user's data upon successful sign up
@@ -21,14 +19,12 @@ const signUpSuccess = function (data) {
   $('#authMessage').text('Congrats! You are now signed up. Please now SIGN IN with your new credentials to access your movies.')
 }
 
-const signUpFailure = function (error) {
-  console.error(error)
+const signUpFailure = function (data) {
   $('#authMessage').text('Error on sign up')
 }
 
 // show success message
 const signInSuccess = function (data) {
-  console.log(data)
   $('#getMoviesButton').show()
   $('#signInModal').modal('hide')
   $('#sign-in-container').hide()
@@ -41,8 +37,7 @@ const signInSuccess = function (data) {
   store.user = data.user
 }
 
-const signInFailure = function (error) {
-  console.error(error)
+const signInFailure = function (data) {
   $('#authMessage').text('Error on sign in')
 }
 
@@ -50,11 +45,9 @@ const changePasswordSuccess = function (data) {
   $('#change-password')[0].reset()
   $('#passwordUpdateModal').modal('hide')
   $('#authMessage').text('Password successfully changed')
-  console.log(data)
 }
 
-const changePasswordFailure = function (error) {
-  console.error(error)
+const changePasswordFailure = function (data) {
   $('#authMessage').text('Error on password change')
 }
 
@@ -71,12 +64,10 @@ const signOutSuccess = function (data) {
   $('#authMessage').show()
   $('#authMessage').text('Come back again soon!')
   store.user = null
-  console.log(data)
 }
 
-const signOutFailure = function (error) {
+const signOutFailure = function (data) {
   $('#appMessage').hide()
-  console.log(error)
   $('#auth-message').text('Error on sign out')
 }
 

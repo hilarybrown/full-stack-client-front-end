@@ -29,8 +29,7 @@ const newMovieSuccess = function (data) {
   $('#appMessage').text("Your new movie has been saved. Click 'View All Movies' to see your addition.")
 }
 
-const newMovieFailure = function (error) {
-  console.log(error)
+const newMovieFailure = function (data) {
   $('#userMessage').text('Error saving your movie. Womp womp.')
 }
 
@@ -39,8 +38,7 @@ const removeMovieSuccess = function (data) {
   $('#appMessage').text("Your movie has been removed. Click 'View All Movies' to see the updated list.")
 }
 
-const removeMovieFailure = function (error) {
-  console.log(error)
+const removeMovieFailure = function (data) {
   $('#appMessage').show()
   $('#appMessage').text("Error removing the movie. You're stuck with it for now.")
 }
@@ -51,8 +49,7 @@ const updateMovieSuccess = function (data) {
   $('#appMessage').text("Your movie has been updated. Click 'View All Movies' to see your update.")
 }
 
-const updateMovieFailure = function (error) {
-  console.log(error)
+const updateMovieFailure = function (data) {
   $('#appMessage').show()
   $('#appMessage').text('Error saving your update.')
 }

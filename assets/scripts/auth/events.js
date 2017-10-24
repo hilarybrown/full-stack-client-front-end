@@ -28,7 +28,6 @@ const onChangePassword = function (event) {
 }
 
 const onSignOut = function (event) {
-  console.log('made it to sign out event')
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
