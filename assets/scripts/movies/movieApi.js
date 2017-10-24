@@ -45,7 +45,6 @@ const removeMovie = function (data) {
 }
 
 const updateMovie = function (movieId, data) {
-  console.log('made it to AJAX request')
   return $.ajax({
     url: config.apiOrigin + '/movies/' + movieId,
     method: 'PATCH',
