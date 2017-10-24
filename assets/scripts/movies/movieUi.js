@@ -7,7 +7,6 @@ const store = require('../store')
 // const getFormFields = require('../../../lib/get-form-fields')
 
 const getMoviesSuccess = function (data) {
-  console.log('getMovieSucces ui = ', data)
   const showMoviesHtml = showMoviesTemplate({ movies: data.movies })
   $('#authMessage').hide()
   $('#appMessage').show()
@@ -17,8 +16,7 @@ const getMoviesSuccess = function (data) {
   $('#showAllMovies').html(showMoviesHtml)
 }
 
-const getMoviesFailure = function (error) {
-  console.error(error)
+const getMoviesFailure = function (data) {
   $('#appMessage').show()
   $('#appMessage').text('Error bringing back your movies. Two thumbs, way down.')
 }
@@ -29,7 +27,6 @@ const newMovieSuccess = function (data) {
   $('#new-movie')[0].reset()
   $('#appMessage').show()
   $('#appMessage').text("Your new movie has been saved. Click 'View All Movies' to see your addition.")
-  console.log(store.movie)
 }
 
 const newMovieFailure = function (error) {

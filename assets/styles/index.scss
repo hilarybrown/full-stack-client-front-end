@@ -1,2 +1,78 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$page-color: #4abdac;
+$font-color: #f7b733;
+$div-color: #dfdce3;
+$btn-color: #f7b733;
+$white: #fff;
+$title-color: #fc4a1a;
+$top-margin: 5%;
+$side-margin: 15%;
+$row-height: 200px;
+$row-width: 600px;
+$msg-color: #01579b;
+
+body {
+  background-color: $page-color;
+  color: $font-color;
+}
+
+h1.page-title {
+  color: $title-color;
+  font-family: "Copperplate";
+  font-size: 72px;
+  font-weight: bolder;
+}
+
+.btn {
+  background-color: $btn-color;
+  border-color: $div-color;
+  color: $white;
+}
+
+.auth-container {
+  align-items: center;
+  background-color: $div-color;
+  border: 1px solid $white;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  text-align: center;
+  width: 400px;
+}
+
+.auth-btn {
+  margin: 5px;
+  padding: 5px;
+}
+
+.auth-buttons {
+  width: 30%;
+}
+
+.appDescription {
+  font-size: 18px;
+  font-family: "Rockwell";
+}
+
+.modal-content {
+  background-color: $div-color;
+}
+
+.modal-header {
+  background-color: $title-color
+}
+
+legend {
+  color: $white;
+}
+
+.message {
+  color: $msg-color;
+}
+
+.movies-table {
+  color: $div-color;
+  font-size: 16px;
+}

@@ -4,7 +4,6 @@ const config = require('../config')
 const store = require('../store')
 
 const getMovies = function () {
-  console.log('getMovies API ajax call success')
   return $.ajax({
     url: config.apiOrigin + '/movies',
     method: 'GET',
@@ -15,7 +14,6 @@ const getMovies = function () {
 }
 
 const showMovie = function (data) {
-  console.log('made it to showMovie API')
   return $.ajax({
     url: config.apiOrigin + '/movies/' + data,
     method: 'GET',
@@ -37,7 +35,6 @@ const newMovie = function (data) {
 }
 
 const removeMovie = function (data) {
-  console.log('made it to removeMovie AJAX request')
   return $.ajax({
     url: config.apiOrigin + '/movies/' + data,
     method: 'DELETE',
