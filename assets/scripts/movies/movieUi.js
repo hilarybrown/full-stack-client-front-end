@@ -2,6 +2,7 @@
 
 const showMoviesTemplate = require('../templates/movie-listing.handlebars')
 const store = require('../store')
+// const movieEvents = require('./movieEvents')
 // const movieApi = require('./movieApi')
 // const getFormFields = require('../../../lib/get-form-fields')
 
@@ -12,10 +13,11 @@ const getMoviesSuccess = function (data) {
   $('#appMessage').show()
   $('#appMessage').text('Here are all movies submitted by you')
   $('#showAllMovies').empty()
-  $('#showAllMovies').append(showMoviesHtml)
+  $('#showAllMovies').html(showMoviesHtml)
+  // $('#showAllMovies').on('click', '.edit-movie', testClick)
 }
 
-const getMoviesfailure = function (error) {
+const getMoviesFailure = function (error) {
   console.error(error)
   $('#appMessage').show()
   $('#appMessage').text('Error bringing back your movies. Two thumbs, way down.')
@@ -46,11 +48,23 @@ const removeMovieFailure = function (error) {
   $('#appMessage').text("Error removing the movie. You're stuck with it for now.")
 }
 
+// const editMovieSuccess = function (data) {
+//   $('#showAllMovies').html('')
+//   const editMovieHTML = editMovieTemplate(data.review)
+//   $('.update-review-content').html(editReviewHTML)
+// }
+//
+// const editReviewError = function () {
+//   console.log('Edit review did not work. Try again.')
+// }
+
 module.exports = {
   getMoviesSuccess,
-  getMoviesfailure,
+  getMoviesFailure,
   newMovieSuccess,
   newMovieFailure,
   removeMovieSuccess,
   removeMovieFailure
+  // updateMovieSuccess,
+  // updateMovieFailure
 }
