@@ -1,15 +1,63 @@
 {{#each movies as |movie|}}
-    <!-- setting up an array, calling it movies and having each go through the entire movies array and pulling back all enterable data, per below -->
-    <div class="movies-table" data-id="{{movie.id}}">
-        <h6><strong>Title:</strong> {{movie.title}}</h6>
-        <h6><strong>Genre:</strong> {{movie.genre}}</h6>
-        <h6><strong>Brief Plot Description:</strong> {{movie.description}}</h6>
-        <h6><strong>Have You Watched It?:</strong> {{movie.was_watched}}</h6>
-        <h6><strong>Rating:</strong> {{movie.rating}}</h6>
-        <h6><strong>Worth Re-watching?:</strong> {{movie.re_watch}}</h6>
-          <button id="edit-movie-button" data-toggle="modal" data-id="{{movie.id}}" data-target="#editMovieModal" class="btn btn-default edit-movie">Edit</button>
-          <button class="btn btn-default remove" type="button" data-id="{{movie.id}}">Remove</button>
-    </div>
+        <!-- setting up an array, calling it movies and having each go through the entire movies array and pulling back all enterable data, per below -->
+        <div class="movies-table" data-id="{{movie.id}}">
+            <h6><strong>Title:</strong> {{movie.title}}</h6>
+            <h6><strong>Genre:</strong> {{movie.genre}}</h6>
+            <h6><strong>Brief Plot Description:</strong> {{movie.description}}</h6>
+            <h6><strong>Have You Watched It?:</strong> {{movie.was_watched}}</h6>
+            <h6><strong>Rating:</strong> {{movie.rating}}</h6>
+            <h6><strong>Worth Re-watching?:</strong> {{movie.re_watch}}</h6>
+              <button data-id="{{movie.id}}" type="button" class="editButton btn btn-default" data-toggle="modal" data-target="#editMovieModal{{movie.id}}">Edit</button>
+              <button class="btn btn-default remove" type="button" data-id="{{movie.id}}">Remove</button>
+        </div>
 
 
-    {{/each}}
+        <!-- Edit Movie Modal -->
+          <div class="modal fade" id="editMovieModal{{movie.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <!--  removed class="update-hike-moda"-->
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                  <h5 class="edit-movie-modal-title">Edit Movie</h5>
+                </div>
+                <div class='this-movie' data-id="{{movie.id}}">
+                 <h6>Title: {{movie.title}}</h6>
+                 <h6>Genre: {{movie.genre}}</h6>
+                 <h6>Breif Description: {{movie.description}}</h6>
+
+                  <form id="edit-movie" data-id="{{movie.id}}">
+                    <fieldset>
+                    <input type='hidden' name='movie[id]' value="{{movie.id}}">
+                    <h6><strong>Have You Watched It?: </strong></h6><select class='was_watched' name='movie[was_watched]' value="{{movie.was_watched}}">
+                      <option value='Yes'>Yes</option>
+                      <option value='No'>No</option>
+                    </select>
+                    <h6><strong>Rating (choose '1' if not watched): </strong></h6><select class='rating' name='movie[rating]' value="{{movie.rating}}">
+                      <option value='1'>1</option>
+                      <option value='2'>2</option>
+                      <option value='3'>3</option>
+                      <option value='4'>4</option>
+                      <option value='5'>5</option>
+                    </select>
+                    <h6><strong>Worth Re-watching?: </strong></h6><select class='re_watch' name='movie[re_watch]' value="{{movie.re_watch}}">
+                      <option value='Yes'>Yes</option>
+                      <option value='No'>No</option>
+                      <option value="Haven't Watched Yet">Haven't Watched Yet</option>
+                    </select>
+                    <div class="modal-footer">
+                      <input data-id="{{movie.id}}" type="submit" class="btn update-button btn-primary" name="submit" value="Save Update">
+                      <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        {{/each}}

@@ -14,6 +14,17 @@ const getMovies = function () {
   })
 }
 
+const showMovie = function (data) {
+  console.log('made it to showMovie API')
+  return $.ajax({
+    url: config.apiOrigin + '/movies/' + data,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const newMovie = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/movies',
@@ -36,9 +47,10 @@ const removeMovie = function (data) {
   })
 }
 
-const updateMovie = function (data) {
+const updateMovie = function (movieId, data) {
+  console.log('made it to AJAX request')
   return $.ajax({
-    url: config.apiOrigin + '/movies/' + store.movie.id,
+    url: config.apiOrigin + '/movies/' + movieId,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -49,6 +61,7 @@ const updateMovie = function (data) {
 
 module.exports = {
   getMovies,
+  showMovie,
   newMovie,
   removeMovie,
   updateMovie
