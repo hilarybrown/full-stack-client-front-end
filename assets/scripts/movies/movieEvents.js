@@ -20,6 +20,13 @@ const onNewMovie = function (event) {
   const data = getFormFields(event.target)
   movieApi.newMovie(data)
     .then(movieUi.newMovieSuccess)
+    .then(onNewMovieRefresh)
+    .catch(movieUi.newMovieFailure)
+}
+
+const onNewMovieRefresh = function (event) {
+  movieApi.getMovies()
+    .then(movieUi.newMovieRefreshSuccess)
     .catch(movieUi.newMovieFailure)
 }
 
@@ -28,6 +35,13 @@ const onRemoveMovie = function (event) {
   const data = $(event.target).parent().attr('data-id')
   movieApi.removeMovie(data)
     .then(movieUi.removeMovieSuccess)
+    .then(onRemoveRefresh)
+    .catch(movieUi.removeMovieFailure)
+}
+
+const onRemoveRefresh = function (event) {
+  movieApi.getMovies()
+    .then(movieUi.removeRefreshSuccess)
     .catch(movieUi.removeMovieFailure)
 }
 

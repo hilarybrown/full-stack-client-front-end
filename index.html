@@ -53,8 +53,8 @@
                 <fieldset>
                   <legend>Sign Up</legend>
                   <input type="text" name="credentials[email]" placeholder="Enter Username">
-                  <input type="text" name="credentials[password]" placeholder="Enter Password">
-                  <input type="text" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+                  <input type="password" name="credentials[password]" placeholder="Enter Password">
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation">
                   <!-- <div class="modal-footer"> -->
                   <p>
                     <input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
@@ -89,7 +89,7 @@
                 <fieldset>
                   <legend>Sign In</legend>
                   <input type="text" name="credentials[email]" placeholder="Enter Username">
-                  <input type="text" name="credentials[password]" placeholder="Enter Password">
+                  <input type="password" name="credentials[password]" placeholder="Enter Password">
                     <div class="modal-footer">
                       <input type="submit" class="btn btn-primary" name="submit" value="Sign In">
                       <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
@@ -113,7 +113,7 @@
         Update Password
       </button>
 
-      <!-- Sign In Modal -->
+      <!-- Password Update Modal -->
       <div class="modal fade" id="passwordUpdateModal" tabindex="-1" role="dialog" aria-labelledby="passwordUpdateModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -127,8 +127,8 @@
               <form id="change-password">
                 <fieldset>
                   <legend>Change Password</legend>
-                  <input type="text" name="passwords[old]" placeholder="Old Password">
-                  <input type="text" name="passwords[new]" placeholder="New Password">
+                  <input type="password" name="passwords[old]" placeholder="Old Password">
+                  <input type="password" name="passwords[new]" placeholder="New Password">
                     <div class="modal-footer">
                     <input type="submit" class="btn btn-primary" name="submit" value="Change Password">
                     <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">

@@ -26,7 +26,17 @@ const newMovieSuccess = function (data) {
   $('#newMovieModal').modal('hide')
   $('#new-movie')[0].reset()
   $('#appMessage').show()
-  $('#appMessage').text("Your new movie has been saved. Click 'View All Movies' to see your addition.")
+  // $('#appMessage').text("Your new movie has been saved. Click 'View All Movies' to see your addition.")
+}
+
+const newMovieRefreshSuccess = function (data) {
+  const showMoviesHtml = showMoviesTemplate({ movies: data.movies })
+  $('#authMessage').hide()
+  $('#appMessage').show()
+  $('#appMessage').text('Your new movie has been saved and is displayed below.')
+  $('#showAllMovies').show()
+  $('#showAllMovies').html('')
+  $('#showAllMovies').html(showMoviesHtml)
 }
 
 const newMovieFailure = function (data) {
@@ -35,12 +45,22 @@ const newMovieFailure = function (data) {
 
 const removeMovieSuccess = function (data) {
   $('#appMessage').show()
-  $('#appMessage').text("Your movie has been removed. Click 'View All Movies' to see the updated list.")
+  // $('#appMessage').text("Your movie has been removed. Click 'View All Movies' to see the updated list.")
 }
 
 const removeMovieFailure = function (data) {
   $('#appMessage').show()
-  $('#appMessage').text("Error removing the movie. You're stuck with it for now.")
+  $('#appMessage').text('Error removing the movie. Two thumbs, way down!')
+}
+
+const removeRefreshSuccess = function (data) {
+  const showMoviesHtml = showMoviesTemplate({ movies: data.movies })
+  $('#authMessage').hide()
+  $('#appMessage').show()
+  $('#appMessage').text('Movie Deleted. Here is you updated list')
+  $('#showAllMovies').show()
+  $('#showAllMovies').html('')
+  $('#showAllMovies').html(showMoviesHtml)
 }
 
 const updateMovieSuccess = function (data) {
@@ -62,5 +82,7 @@ module.exports = {
   removeMovieSuccess,
   removeMovieFailure,
   updateMovieSuccess,
-  updateMovieFailure
+  updateMovieFailure,
+  removeRefreshSuccess,
+  newMovieRefreshSuccess
 }
